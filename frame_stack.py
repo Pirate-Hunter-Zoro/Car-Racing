@@ -16,6 +16,9 @@ class FrameStack:
     def step(self, new_frame):
         self.frames.append(new_frame)
         return self._get_stack()
+    
+    def __len__(self): 
+        return len(self.frames)
 
     def _get_stack(self):
         return torch.cat(list(self.frames), dim=0)  # Shape: [k, H, W] - k frames, each with height and width
